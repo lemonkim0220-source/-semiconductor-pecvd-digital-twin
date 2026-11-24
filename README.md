@@ -42,9 +42,12 @@ Initial attempts using simple additive Gaussian noise resulted in unrealistic ov
 
 ---
 
+## Note 
+1. Running the notebook generates the synthetic dataset automatically
+2. 
 ## Repository Structure
 ```text
-├── PECVD_SiO2_Data_Code.ipynb              # Initial physics engine prototype & baseline data generation
+├── PECVD_SiO2_Data_Code.ipynb              # Initial physics engine prototype & baseline data generation "Running the notebook generates the synthetic dataset automatically"
 ├── PECVD_SiO2_Dataset_Sample.csv           # Generated 50,000-row synthetic process dataset sample
 ├── PECVD_Integrated_Digital_Twin.ipynb     # [Main] Integrated pipeline: XGBoost training, EDA, & recipe optimization
 └── README.md                               # Project documentation
