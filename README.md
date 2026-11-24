@@ -12,7 +12,7 @@ Moving beyond naive mathematical synthetic data, this framework incorporates **p
 
 ### 1. 30L Chamber Process Window Bounds
 To prevent pump choking, gas-phase nucleation (particle generation), and severe ion bombardment damage, strict operational hard limits were enforced:
-* **Temperature:** 250 ~ 400 °C (or 300 ~ 450 °C)
+* **Temperature:** 250 ~ 400 °C
 * **Chamber Pressure:** 1.0 ~ 5.0 Torr
 * **RF Power:** 50 ~ 300 W
 * **Gas Flow Rates:**
