@@ -30,7 +30,7 @@ To prevent pump choking, gas-phase nucleation (particle generation), and severe 
 Initial attempts using simple additive Gaussian noise resulted in unrealistic overfitting ($R^2 > 0.995$) as tree-based models memorized the underlying equations. To solve this:
 * **Unmeasured Disturbance:** Injected a multiplicative hidden variable representing **chamber wall polymer accumulation (`chamber_wall_condition`)**, which is excluded from the model's training features (`X`).
 * **Heteroscedastic Noise:** Scaled error variance dynamically based on extreme operating conditions (high temperature and high RF power).
-* **Outcome:** Stabilized model performance to a realistic fab-level $R^2 \approx 0.84 \sim 0.93$, with an overall baseline defect rate of **~10–14%**.
+* **Outcome:** Stabilized model performance to a realistic fab-level $R^2 \approx 0.85 \sim 0.95$, with an overall baseline defect rate of **~10–14%**.
 
 ---
 
@@ -38,17 +38,17 @@ Initial attempts using simple additive Gaussian noise resulted in unrealistic ov
 1. **Multi-Stage Non-Linear Deposition Curve:** The trained XGBoost model accurately captures step-like saturation plateaus in deposition rate as effective plasma density ($Power \times Pressure$) increases, reflecting surface site saturation and limiting-reactant switching.
 2. **Fab-Viable Optimal Recipe (Target Rate: 100.0 nm/min):**
    * Resolved optimizer (Nelder-Mead) extrapolation blind spots by introducing domain-informed boundary constraints and penalties.
-   * **Optimal Recipe:** **Temp** 351.7 °C, **Pressure** 3.1 Torr, **Power** 210.8 W, **SiH4** 53.5 sccm, **N2O** 1087.3 sccm, **Ar** 1057.2 sccm (maintaining a healthy N2O/SiH4 ratio > 20).
+   * **Optimal Recipe:** **Temp** 304.8 °C, **Pressure** 1.6 Torr, **Power** 176.3 W, **SiH4** 53.1 sccm, **N2O** 1178.6 sccm, **Ar** 1134.6 sccm (maintaining a healthy N2O/SiH4 ratio > 20).
 
 ---
 
-## Note 
-* Running the notebook generates the synthetic dataset automatically as **.csv**
-* 
+## Note
+- Running the notebooks automatically generates the synthetic dataset (`.csv`) and three serialized model/parameter files (`.pkl`).
+- Generated `.csv` and `.pkl` artifacts are kept in a separate directory rather than committed directly to the repository root.
 
 ## Repository Structure
 ```text
-├── PECVD_SiO2_Data_Code.ipynb              # Initial physics engine prototype & baseline data generation 
-├── PECVD_SiO2_Dataset_Sample.csv           
-├── PECVD_Integrated_Digital_Twin.ipynb     # [Main] Integrated pipeline: XGBoost training, EDA, & recipe optimization
-└── README.md                               # Project documentation
+├── 01_PECVD_data_generation.ipynb             # Initial physics engine prototype & baseline data generation          
+├── 02_PECVD_integrated_digital_twin.ipynb     # [Main] Integrated pipeline: XGBoost training, EDA, & recipe optimization                           
+├── 03_PECVD_advanced+analytics.ipynb          # Process window mapping, chamber aging drift simulation, & multi-target inverse design
+└── README.md                                  # Project documentation
