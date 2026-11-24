@@ -1,4 +1,3 @@
-Markdown
 # PECVD SiO2 Deposition Process Digital Twin & AI Recipe Optimization
 
 ## Overview
@@ -37,18 +36,29 @@ Initial attempts using simple additive Gaussian noise resulted in unrealistic ov
 ## Key Results
 1. **Multi-Stage Non-Linear Deposition Curve:** The trained XGBoost model accurately captures step-like saturation plateaus in deposition rate as effective plasma density ($Power \times Pressure$) increases, reflecting surface site saturation and limiting-reactant switching.
 2. **Fab-Viable Optimal Recipe (Target Rate: 100.0 nm/min):**
-   * Resolved optimizer (Nelder-Mead) extrapolation blind spots by introducing domain-informed boundary constraints and penalties.
+   * **Surrogate Modeling & Inverse Optimization:** Trained `XGBoost` models via `RandomizedSearchCV` on the physics-informed dataset to predict deposition rate and defect probability, then applied `Differential Evolution` with domain-informed bounds, stoichiometry (`N2O/SiH4 >= 20`), and RF power penalties to solve for fab-viable recipes
    * **Optimal Recipe:** **Temp** 304.8 °C, **Pressure** 1.6 Torr, **Power** 176.3 W, **SiH4** 53.1 sccm, **N2O** 1178.6 sccm, **Ar** 1134.6 sccm (maintaining a healthy N2O/SiH4 ratio > 20).
-
+3. **Advanced Process Diagnostics & Inverse Design (`03_PECVD_advanced_analytics.ipynb`):**
+   - **Process Window & Forbidden Zone Map:** Visualizes predicted deposition rate contours across chamber temperature and RF power while masking high-defect-risk regimes.
+   - **Chamber Aging & Drift Simulation:** Simulates cumulative wafer-to-wafer plasma density degradation to track deposition rate drift against Preventive Maintenance (PM) thresholds.
+   - **Multi-Target Inverse Recipe Solver:** Uses Differential Evolution with stoichiometry (`N2O/SiH4 >= 20`) and power constraints to generate fab-viable recipes across target rates (90–115 nm/min).
 ---
 
 ## Note
 - Running the notebooks automatically generates the synthetic dataset (`.csv`) and three serialized model/parameter files (`.pkl`).
-- Generated `.csv` and `.pkl` artifacts are kept in a separate directory rather than committed directly to the repository root.
+- Generated `.csv` and `.pkl` artifacts are excluded from version control via `.gitignore` to keep the repository lightweight.
 
+## Usage
+Run the notebooks sequentially in order so that upstream datasets and trained model/parameter artifacts are generated before downstream analysis:
+
+1. **`01_PECVD_data_generation.ipynb`**: Generates the physics-informed synthetic dataset (`.csv`).
+2. **`02_PECVD_integrated_digital_twin.ipynb`**: Trains the `XGBoost` surrogate models via `RandomizedSearchCV`, runs recipe optimization via `Differential Evolution`, and saves the serialized `.pkl` artifacts.
+3. **`03_PECVD_advanced_analytics.ipynb`**: Loads the saved `.pkl` files to generate the process window & forbidden zone map, chamber aging drift simulation, and multi-target inverse design table.
+   
 ## Repository Structure
 ```text
 ├── 01_PECVD_data_generation.ipynb             # Initial physics engine prototype & baseline data generation          
 ├── 02_PECVD_integrated_digital_twin.ipynb     # [Main] Integrated pipeline: XGBoost training, EDA, & recipe optimization                           
 ├── 03_PECVD_advanced+analytics.ipynb          # Process window mapping, chamber aging drift simulation, & multi-target inverse design
+├── .gitignore                                 # Excludes generated .csv datasets and .pkl model artifacts
 └── README.md                                  # Project documentation
