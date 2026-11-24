@@ -43,7 +43,7 @@ Initial attempts using simple additive Gaussian noise resulted in unrealistic ov
 ---
 
 ## Note 
-* Running the notebook generates the synthetic dataset automatically
+* Running the notebook generates the synthetic dataset automatically as **.csv**
 * 
 
 ## Repository Structure
