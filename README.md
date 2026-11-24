@@ -36,12 +36,12 @@ Initial attempts using simple additive Gaussian noise resulted in unrealistic ov
 ## Key Results
 1. **Multi-Stage Non-Linear Deposition Curve:** The trained XGBoost model accurately captures step-like saturation plateaus in deposition rate as effective plasma density ($Power \times Pressure$) increases, reflecting surface site saturation and limiting-reactant switching.
 2. **Fab-Viable Optimal Recipe (Target Rate: 100.0 nm/min):**
-   * **Surrogate Modeling & Inverse Optimization:** Trained `XGBoost` models via `RandomizedSearchCV` on the physics-informed dataset to predict deposition rate and defect probability, then applied `Differential Evolution` with domain-informed bounds, stoichiometry (`N2O/SiH4 >= 20`), and RF power penalties to solve for fab-viable recipes
+   * **Surrogate Modeling & Inverse Optimization:** Trained `XGBoost` models via `RandomizedSearchCV` on the physics-informed dataset to predict deposition rate and defect probability, then applied `Differential Evolution` with domain-informed bounds, stoichiometry (`N2O/SiH4 >= 20`), and RF power penalties to solve for fab-viable recipes(avoiding local-search extrapolation blind spots such as Nelder-Mead).
    * **Optimal Recipe:** **Temp** 304.8 °C, **Pressure** 1.6 Torr, **Power** 176.3 W, **SiH4** 53.1 sccm, **N2O** 1178.6 sccm, **Ar** 1134.6 sccm (maintaining a healthy N2O/SiH4 ratio > 20).
 3. **Advanced Process Diagnostics & Inverse Design (`03_PECVD_advanced_analytics.ipynb`):**
    - **Process Window & Forbidden Zone Map:** Visualizes predicted deposition rate contours across chamber temperature and RF power while masking high-defect-risk regimes.
    - **Chamber Aging & Drift Simulation:** Simulates cumulative wafer-to-wafer plasma density degradation to track deposition rate drift against Preventive Maintenance (PM) thresholds.
-   - **Multi-Target Inverse Recipe Solver:** Uses Differential Evolution with stoichiometry (`N2O/SiH4 >= 20`) and power constraints to generate fab-viable recipes across target rates (90–115 nm/min).
+   - **Multi-Target Inverse Recipe Solver:** Uses `Differential Evolution` with stoichiometry (`N2O/SiH4 >= 20`) and power constraints to generate fab-viable recipes across target rates (90–115 nm/min).
 ---
 
 ## Note
