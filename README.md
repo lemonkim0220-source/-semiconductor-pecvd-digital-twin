@@ -57,8 +57,9 @@ Run the notebooks sequentially in order so that upstream datasets and trained mo
    
 ## Repository Structure
 ```text
-├── 01_PECVD_data_generation.ipynb             # Initial physics engine prototype & baseline data generation          
-├── 02_PECVD_integrated_digital_twin.ipynb     # [Main] Integrated pipeline: XGBoost training, EDA, & recipe optimization                           
-├── 03_PECVD_advanced+analytics.ipynb          # Process window mapping, chamber aging drift simulation, & multi-target inverse design
 ├── .gitignore                                 # Excludes generated .csv datasets and .pkl model artifacts
+├── 01_PECVD_data_generation.ipynb             # Initial physics engine prototype & baseline data generation
+├── 02_PECVD_integrated_digital_twin.ipynb     # [Main] Integrated pipeline: XGBoost training, EDA, & recipe optimization
+├── 03_PECVD_advanced_analytics.ipynb          # Process window mapping, chamber aging drift simulation, & multi-target inverse design
+├── LICENSE                                    # MIT License
 └── README.md                                  # Project documentation
