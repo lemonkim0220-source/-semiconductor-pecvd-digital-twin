@@ -221,3 +221,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated datasets and serialized ML artifacts
+*.csv
+*.pkl
