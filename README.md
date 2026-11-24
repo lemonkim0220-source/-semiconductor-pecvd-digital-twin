@@ -44,7 +44,7 @@ Initial attempts using simple additive Gaussian noise resulted in unrealistic ov
 
 ## Repository Structure
 ```text
-├── PECVD_0.2.0.ipynb                       # Initial physics engine prototype & baseline data generation
-├── pecvd_advanced_synthetic1.1_dataset.csv # Generated 50,000-row synthetic process dataset
-├── PECVD_Integrated_Digital_Twin.ipynb     # [Main] Integrated pipeline: data gen, XGBoost/RF training, EDA, & recipe optimization
+├── PECVD_SiO2_Data_Code.ipynb              # Initial physics engine prototype & baseline data generation
+├── PECVD_SiO2_Dataset_Sample.csv           # Generated 50,000-row synthetic process dataset sample
+├── PECVD_Integrated_Digital_Twin.ipynb     # [Main] Integrated pipeline: XGBoost training, EDA, & recipe optimization
 └── README.md                               # Project documentation
