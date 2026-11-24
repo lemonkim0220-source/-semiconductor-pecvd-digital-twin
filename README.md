@@ -29,7 +29,7 @@ To prevent pump choking, gas-phase nucleation (particle generation), and severe 
 Initial attempts using simple additive Gaussian noise resulted in unrealistic overfitting ($R^2 > 0.995$) as tree-based models memorized the underlying equations. To solve this:
 * **Unmeasured Disturbance:** Injected a multiplicative hidden variable representing **chamber wall polymer accumulation (`chamber_wall_condition`)**, which is excluded from the model's training features (`X`).
 * **Heteroscedastic Noise:** Scaled error variance dynamically based on extreme operating conditions (high temperature and high RF power).
-* **Outcome:** Stabilized model performance to a realistic fab-level $R^2 \approx 0.85 \sim 0.95$, with an overall baseline defect rate of **~10–14%**.
+* **Outcome:** Stabilized model performance to a realistic fab-level $R^2 \approx 0.85 \sim 0.95$, with an overall baseline defect rate of **~10–15%**.
 
 ---
 
